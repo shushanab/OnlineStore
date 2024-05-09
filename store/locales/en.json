@@ -1,5 +1,9 @@
 {
     "product": {
-      "list": "Product List"
-    }
+        "list": "Products"
+    },
+    "category": {
+        "list": "Categories"
+    },
+    "search": "Search"
 }
