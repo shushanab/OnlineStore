@@ -1,9 +1,11 @@
 // Nuxt config file
 export default defineNuxtConfig({
+  ssr: false,
   app: {
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
+      title: 'Online Store | ECWID test task',
     }
   },
   modules: ['@nuxtjs/i18n', 'vuetify-nuxt-module'],
@@ -13,11 +15,14 @@ export default defineNuxtConfig({
     locales: [{
       code: 'en',
       name: 'English',
+      file: 'en.json'
     }, {
       code: 'am',
       name: 'Հայերեն',
+      file: 'am.json'
     }],
     defaultLocale: 'en',
+    langDir: 'locales',
     strategy: 'no_prefix', // or 'prefix_except_default'
     vueI18n: './i18n.config.ts',
   },
@@ -27,6 +32,13 @@ export default defineNuxtConfig({
     },
     vuetifyOptions: {
       /* vuetify options */
+    }
+  },
+  runtimeConfig: {
+    // Keys within public, will be also exposed to the client-side
+    public: {
+      storeID: process.env.STORE_ID,
+      token: process.env.TOKEN,
     }
   }
 })
