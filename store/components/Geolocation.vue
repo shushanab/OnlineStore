@@ -5,9 +5,10 @@
     icon="mdi-map-marker" 
     variant="text"
   ></v-btn>
-  <p>
-    <b>{{ city }} </b>
-    <span> ({{ country }})</span>
+  <p style="line-height: 16px;">
+    <b >{{ city }} </b>
+    <br />
+    <small> {{ country }}</small>
   </p>
 </template>
 <script setup lang="ts">
@@ -18,7 +19,7 @@ const city = ref('');
 
 onMounted(async () => {
   try {
-    const response = await fetch('http://ip-api.com/json');
+    const response = await fetch('http://ip-api.com/json?fields=country,city');
     if (!response.ok) {
       throw new Error('Request failed. Returned status of ' + response.status);
     }
