@@ -9,13 +9,18 @@ export default defineNuxtConfig({
     }
   },
   modules: ['@nuxtjs/i18n', 'vuetify-nuxt-module'],
+  plugins: [
+    '~/plugins/pinia.ts', 
+  ],
   i18n: {
-    // if not using RTL, you can replace locales with codes only
-    // locales: ['en', 'es'],
     locales: [{
       code: 'en',
       name: 'English',
       file: 'en.json'
+    }, {
+      code: 'ru',
+      name: 'Русский',
+      file: 'ru.json'
     }, {
       code: 'am',
       name: 'Հայերեն',
@@ -35,8 +40,8 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
-    // Keys within public, will be also exposed to the client-side
     public: {
+      baseUrl: process.env.BASE_URL,
       storeID: process.env.STORE_ID,
       token: process.env.TOKEN,
     }

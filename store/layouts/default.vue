@@ -32,5 +32,9 @@
 
 
 <script setup lang="ts">
-
 </script>
+<style scoped>
+html, body {
+  font-family: Montserrat, sans-serif;
+}
+</style>

@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { defineEmits } from 'vue';
 
 const emit = defineEmits(['focus', 'blur', 'update:modelValue']);

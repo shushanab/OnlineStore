@@ -1,6 +1,9 @@
 {
     "product": {
-        "list": "Products"
+        "list": "Products",
+        "total": "Found {0} products",
+        "buy": "Buy",
+        "add-to-cart": "+ Cart"
     },
     "category": {
         "list": "Categories"

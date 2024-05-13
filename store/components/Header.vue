@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar flat color="purple">
+  <v-app-bar flat color="teal">
     <v-container class="mx-auto d-flex align-center justify-center">
       <Search 
         v-model="searchText"

@@ -1,7 +1,7 @@
 <template>
   <v-btn 
     class="ma-2"
-    color="purple-lighten-4" 
+    color="teal-lighten-4" 
     icon="mdi-map-marker" 
     variant="text"
   ></v-btn>
