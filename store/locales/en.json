@@ -3,7 +3,9 @@
         "list": "Products",
         "total": "Found {0} products",
         "buy": "Buy",
-        "add-to-cart": "+ Cart"
+        "add-to-cart": "+ Cart",
+        "sku": "Stock keeping unit: {0} pieces",
+        "final-price": "Only one left"
     },
     "category": {
         "list": "Categories"

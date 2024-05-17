@@ -23,7 +23,6 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { defineEmits } from 'vue';
 
 const emit = defineEmits(['focus', 'blur', 'update:modelValue']);
 const minWidth = ref(275);
