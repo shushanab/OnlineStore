@@ -5,10 +5,14 @@
         "buy": "Buy",
         "add-to-cart": "+ Cart",
         "sku": "Stock keeping unit: {0} pieces",
-        "final-price": "Only one left"
+        "one-left": "Only one left"
     },
     "category": {
-        "list": "Categories"
+        "list": "Categories",
+        "filter": "Filter",
+        "clear-selection": "Clear Selection",
+        "help-text": "Select category to filter out"
+
     },
     "search": "Search"
 }

@@ -29,16 +29,16 @@ const productStore = useProductStore();
 
 const { productObj } = storeToRefs(productStore);
 
-const getProducts = async (offset: number, keyword: string) => {
+const getProducts = async (offset: number, categories: string | [], keyword: string) => {
   try {
-    await productStore.getProducts(offset, keyword);
+    await productStore.getProducts(offset, categories, keyword);
   } catch (error) {
     console.error('Request failed:', error);
   }
 }
 
 onMounted(async () => {
-    await getProducts(0, "");
+    await getProducts(0, "home", "");
 });
 </script>
 

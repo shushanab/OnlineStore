@@ -1,9 +1,16 @@
 <template>
   <v-hover>
     <template v-slot:default="{ isHovering, props }">
-      <v-card class="ma-4 rounded-lg" :disabled="!product?.inStock" v-bind="props" hover>
+      <v-card 
+        v-bind="props" 
+        class="ma-4 rounded-lg" 
+        hover
+        :disabled="!product?.inStock" 
+        :href="!isActionButtonClicked ? `product/${product?.id}` : undefined"
+        @click="navigateToProduct"
+        >
         <v-img :class="['align-end', {'img-scale': isHovering}]" height="300px" cover :src="product?.thumbnailUrl">
-          <div v-if="product?.sku == '0001'" class="badge">{{ $t('product.final-price') }}</div>
+          <div v-if="product?.sku == '0001'" class="badge">{{ $t('product.one-left') }}</div>
         </v-img>
         <v-card-title class="text-teal-darken-4 bg-white">{{ product?.name }}</v-card-title>
         <v-card-text>
@@ -14,15 +21,15 @@
           <v-list-item class="w-100">
             <template v-slot:prepend>
               <div class="justify-self-start">
-                <v-btn icon="mdi-heart-outline" size="small"></v-btn>
-                <v-btn icon="mdi-share-variant" size="small"></v-btn>
+                <v-btn icon="mdi-heart-outline" size="small" @click.prevent="addToWishlist(product)"></v-btn>
+                <v-btn icon="mdi-share-variant" size="small" @click.prevent="shareProduct(product)"></v-btn>
               </div>
             </template>
             <template v-slot:append>
               <div class="justify-self-end">
-                <v-btn class="me-3" icon="mdi-cart-plus" size="small"></v-btn>
+                <v-btn class="me-3" icon="mdi-cart-plus" size="small" @click.prevent="addToCart(product)"></v-btn>
                 <v-btn color="teal" variant="elevated" size="small" rounded="xl" class="px-6" text="buy"
-                  prepend-icon="mdi-credit-card-fast-outline" />
+                  prepend-icon="mdi-credit-card-fast-outline" @click.prevent="buyNow(product)" />
               </div>
             </template>
           </v-list-item>
@@ -34,12 +41,38 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const props = defineProps({
   productData: Object,
 });
 
 const product = ref(props.productData);
+const router = useRouter();
+
+const navigateToProduct = () => {
+  if (!isActionButtonClicked) {
+    router.push(`/product/${product.value.id}`);
+  }
+};
+
+const isActionButtonClicked = ref(false);
+
+const addToWishlist = (product) => {
+  console.log('Added to wishlist:', product);
+};
+
+const shareProduct = (product) => {
+  console.log('Shared product:', product);
+};
+
+const addToCart = (product) => {
+  console.log('Added to cart:', product);
+};
+
+const buyNow = (product) => {
+  console.log('Buying product:', product);
+};
 </script>
 
 <style scoped>
@@ -80,6 +113,8 @@ const product = ref(props.productData);
   height: 40px;
   padding: 0 10px;
   text-align: center;
+  font-weight: 500;
+  font-size: 18px;
   color: #fff;
   background-color: rgb(202, 100, 125);
   display: flex;
@@ -91,19 +126,19 @@ const product = ref(props.productData);
 }
 
 .description {
+  font-size: 16px;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
   padding: 16px;
+  color: darkslategray;
+  background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 10;
   transition: visibility 0.3s, opacity 0.3s;
   visibility: hidden;
-  color: darkslategray;
   opacity: 0;
-  font-size: 16px;
+  z-index: 10;
 }
 
 .description.visible {

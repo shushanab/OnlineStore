@@ -11,6 +11,8 @@
 
       <v-spacer></v-spacer>
 
+      <v-btn class="ma-2" color="white" icon="mdi-heart" variant="text"></v-btn>
+
       <v-btn class="ma-2" color="white" icon="mdi-cart-outline" variant="text"></v-btn>
 
       <v-avatar color="grey-darken-1" size="32" image="https://avatars.githubusercontent.com/u/33631649?v=4"></v-avatar>
