@@ -8,9 +8,9 @@
 </template>
 
 <style scoped>
-html,
-body {
-  font-family: Montserrat, sans-serif;
-  overflow-y: hidden !important;
-}
+  html,
+  body {
+    font-family: Montserrat, sans-serif;
+    overflow-y: hidden !important;
+  }
 </style>

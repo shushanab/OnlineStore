@@ -12,13 +12,9 @@ export default async (url: string, options: ApiOption = { method: 'GET' }) => {
   const { error, data } = await useFetch(url, {
     baseURL: baseURL,
     async onRequest({ options }) {
-
       if (accessToken) {
         options.headers = new Headers(options.headers);
-        options.headers.set(
-          'Authorization',
-          `Bearer ${accessToken}` || '',
-        );
+        options.headers.set('Authorization', `Bearer ${accessToken}` || '');
       }
     },
     ...options,

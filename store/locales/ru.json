@@ -1,9 +1,9 @@
 {
-    "product": {
-        "list": "Products"
-    },
-    "category": {
-        "list": "Categories"
-    },
-    "search": "Search"
+  "product": {
+    "list": "Products"
+  },
+  "category": {
+    "list": "Categories"
+  },
+  "search": "Search"
 }

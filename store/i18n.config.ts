@@ -1,4 +1,4 @@
 export default {
-    legacy: false,
-    locale: 'en',
-}
+  legacy: false,
+  locale: 'en',
+};

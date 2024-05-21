@@ -1,18 +1,17 @@
 {
-    "product": {
-        "list": "Products",
-        "total": "Found {0} products",
-        "buy": "Buy",
-        "add-to-cart": "+ Cart",
-        "sku": "Stock keeping unit: {0} pieces",
-        "one-left": "Only one left"
-    },
-    "category": {
-        "list": "Categories",
-        "filter": "Filter",
-        "clear-selections": "Clear Selections",
-        "help-text": "Select category to filter out"
-
-    },
-    "search": "Search"
+  "product": {
+    "list": "Products",
+    "total": "Found {0} products",
+    "buy": "Buy",
+    "add-to-cart": "+ Cart",
+    "sku": "Stock keeping unit: {0} pieces",
+    "one-left": "Only one left"
+  },
+  "category": {
+    "list": "Categories",
+    "filter": "Filter",
+    "clear-selections": "Clear Selections",
+    "help-text": "Select category to filter out"
+  },
+  "search": "Search"
 }
