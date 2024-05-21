@@ -3,7 +3,7 @@
     <template v-slot:default="{ isHovering, props }">
       <v-card 
         v-bind="props" 
-        class="ma-4 rounded-lg" 
+        class="ma-2 rounded-lg" 
         hover
         :disabled="!product?.inStock" 
         :href="!isActionButtonClicked ? `product/${product?.id}` : undefined"

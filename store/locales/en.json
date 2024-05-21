@@ -10,7 +10,7 @@
     "category": {
         "list": "Categories",
         "filter": "Filter",
-        "clear-selection": "Clear Selection",
+        "clear-selections": "Clear Selections",
         "help-text": "Select category to filter out"
 
     },

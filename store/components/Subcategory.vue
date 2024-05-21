@@ -2,11 +2,11 @@
     <v-hover>
       <template v-slot:default="{ isHovering, props }">
         <v-card 
-          :class="['ma-4 rounded-lg', { 'selected-card': isSelected }]" 
+          :class="['ma-4 rounded-lg', { 'selected-card': selected }]" 
           v-bind="props" 
           hover 
-          width="200" 
-          height="200" 
+          width="150" 
+          height="150" 
           @click="toggleSelection"
         >
           <v-img 
@@ -31,13 +31,11 @@
   });
   
   const category = ref(props.categoryData);
-  const isSelected = ref(props.selected);
 
-const toggleSelection = () => {
-  isSelected.value = !isSelected.value;
-  console.log("INNER: ", category.value.id, isSelected.value);
-  emit('category:selected', category.value.id, isSelected.value);
-};
+  const toggleSelection = () => {
+    category.value.isSelected = !category.value.isSelected;
+    emit('category:selected', category.value);
+  };
   
   </script>
   
