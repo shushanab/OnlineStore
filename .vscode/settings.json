@@ -1,0 +1,27 @@
+{
+  "workbench.colorTheme": "Quiet Light",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue",
+    "typescript",
+    "typescriptreact"
+  ],
+  "prettier.requireConfig": true,
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "singleQuote": true,
+      "semi": false,
+      "trailingComma": "es5",
+      "tabWidth": 2,
+      "printWidth": 80,
+      "endOfLine": "auto",
+      "vueIndentScriptAndStyle": true
+    }
+  }
+}
