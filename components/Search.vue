@@ -13,7 +13,7 @@
         prepend-inner-icon="mdi-magnify"
         clear-icon="mdi-close"
         class="highlight-on-focus"
-        :label="$t('search')"
+        :label="$t('common.search')"
         @click:clear="handleClear"
         @keyup.enter="handleFilter"
         @focus="handleFocus"

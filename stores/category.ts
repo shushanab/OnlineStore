@@ -12,11 +12,16 @@ export const useCategoryStore = defineStore('category', {
   }),
   actions: {
     async getCategories() {
-      const { pending, data, error } = await useApiFetch(
-        `/categories?lang=en&responseFields=${this.responseFields}`
-      );
-      if (data.value) {
-        this.categoryObj = data.value;
+      try {
+        const { data } = await useApiFetch(
+          `/categories?&responseFields=${this.responseFields}`
+        );
+        if (data.value) {
+          this.categoryObj = data.value;
+        }
+      } catch (error) {
+        console.error('Request failed:', error);
+        throw error;
       }
     },
     setSelectedCategories(data: []) {

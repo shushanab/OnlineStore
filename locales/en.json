@@ -14,5 +14,12 @@
     "clear-selections": "Clear Selections",
     "help-text": "Select category to filter out"
   },
-  "search": "Search"
+  "common": {
+    "search": "Search",
+    "home-page": "Home Page"
+  },
+  "error": {
+    "page-not-found": "404 Not Found",
+    "other-error": "An error occurred"
+  }
 }
