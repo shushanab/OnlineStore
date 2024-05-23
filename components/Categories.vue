@@ -13,7 +13,9 @@
         <v-row v-else style="width: 100%" no-gutters>
           <v-col>
             <span class="ml-6">
-              <i><b>{{ formattedSelectedCategories }}</b></i>
+              <i
+                ><b>{{ formattedSelectedCategories }}</b></i
+              >
             </span>
           </v-col>
         </v-row>

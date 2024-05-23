@@ -1,6 +1,6 @@
 <template>
   <v-app-bar flat color="teal">
-    <v-container class="mx-auto d-flex align-center justify-center">
+    <v-container class="mx-auto d-flex align-center justify-center" fluid>
       <Search
         v-model="searchText"
         @focus="handleSearchFocus"

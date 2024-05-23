@@ -4,18 +4,17 @@
       <v-card
         v-bind="props"
         hover
-        width="150"
-        height="150"
+        width="180"
+        height="180"
         :class="['ma-4 rounded-lg', { 'selected-card': selected }]"
         @click="toggleSelection"
       >
         <v-img
           :class="['align-end', { 'img-scale': isHovering }]"
-          width="200px"
           :src="category?.thumbnailUrl"
         >
           <v-card-title class="text-teal-darken-4 bg-white text-center">{{
-            category?.name
+            `${category?.name} (${category?.productCount})`
           }}</v-card-title>
         </v-img>
       </v-card>

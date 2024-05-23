@@ -5,7 +5,8 @@
     "buy": "Buy",
     "add-to-cart": "+ Cart",
     "sku": "Stock keeping unit: {0} pieces",
-    "one-left": "Only one left"
+    "one-left": "Only one left",
+    "no-result": "There are no products found by selected filters, please try again."
   },
   "category": {
     "list": "Categories",

@@ -14,6 +14,7 @@
         clear-icon="mdi-close"
         class="highlight-on-focus"
         :label="$t('search')"
+        @click:clear="handleClear"
         @keyup.enter="handleFilter"
         @focus="handleFocus"
         @blur="handleBlur"
@@ -38,6 +39,11 @@
   const handleFocus = () => {
     minWidth.value = minWidth.value * 2;
     emit('focus');
+  };
+
+  const handleClear = () => {
+    internalSearchValue.value = '';
+    handleFilter();
   };
 
   const handleFilter = () => {

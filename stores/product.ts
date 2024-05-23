@@ -8,6 +8,7 @@ export const useProductStore = defineStore('product', {
       count: 0,
       items: [],
     },
+    loading: false,
   }),
   actions: {
     async getProducts(
@@ -15,6 +16,7 @@ export const useProductStore = defineStore('product', {
       categories: string | [],
       keyword: string
     ) {
+      this.loading = true;
       try {
         const { data } = await useApiFetch(
           `/products?responseFields=${this.responseFields}&offset=${offset}&keyword=${keyword}&categories=${categories}`
@@ -27,6 +29,8 @@ export const useProductStore = defineStore('product', {
       } catch (error) {
         console.error('Request failed:', error);
         throw error;
+      } finally {
+        this.loading = false;
       }
     },
   },

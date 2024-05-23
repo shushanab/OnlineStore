@@ -9,13 +9,16 @@
       <v-col cols="12">
         <v-sheet min-height="70vh" rounded="lg">
           <v-card flat rounded="lg">
-            <v-card-text>
+            <Loader v-if="productStore.loading" />
+
+            <v-card-text v-else>
               <v-card-title>{{ $t('product.list') }}</v-card-title>
               <v-card-text>
                 <ProductList
                   v-if="productObj?.count"
                   :productObj="productObj"
                 />
+                <NoResult :description="$t('product.no-result')" v-else />
               </v-card-text>
             </v-card-text>
           </v-card>
