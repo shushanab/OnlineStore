@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 export const useCategoryStore = defineStore('category', {
   state: () => ({
     responseFields: 'count,items(id,name,thumbnailUrl)',
+    selectedCategories: [],
     categoryObj: {
       count: Number,
       items: [],
@@ -16,6 +17,9 @@ export const useCategoryStore = defineStore('category', {
       if (data.value) {
         this.categoryObj = data.value;
       }
+    },
+    setSelectedCategories(data: []) {
+      this.selectedCategories = data;
     },
   },
 });

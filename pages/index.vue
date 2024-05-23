@@ -2,7 +2,7 @@
   <v-container class="bg-grey-lighten-3" fluid>
     <v-row>
       <v-col cols="12">
-        <Categories @category:filter="getProductsByCategories" />
+        <Categories @category:filter="getProductsByCategoriesAndKeyword" />
       </v-col>
     </v-row>
     <v-row>
@@ -27,8 +27,13 @@
 
 <script setup lang="ts">
   import { useProductStore } from '~/stores/product';
+  import { useCategoryStore } from '~/stores/category';
+  import { useSearchStore } from '~/stores/search';
 
   const productStore = useProductStore();
+  const categoriesStore = useCategoryStore();
+  const searchStore = useSearchStore();
+
   const productObj = ref();
 
   const getProducts = async (
@@ -50,11 +55,21 @@
     }
   };
 
-  const getProductsByCategories = async (selectedCategoriesIds: []) => {
-    await getProducts(0, selectedCategoriesIds, '');
+  const getProductsByCategoriesAndKeyword = async () => {
+    const selectedCategoriesIds = categoriesStore.selectedCategories.length
+      ? categoriesStore.selectedCategories.map((category) => category.id)
+      : ['home'];
+
+    await getProducts(0, selectedCategoriesIds, searchStore.searchValue);
+  };
+
+  const handleSearchEvent = async (event: CustomEvent) => {
+    const searchValue = event.detail;
+    await getProducts(0, 'home', searchValue);
   };
 
   onMounted(async () => {
-    await getProducts(0, 'home', '');
+    await getProductsByCategoriesAndKeyword();
+    window.addEventListener('perform-search', handleSearchEvent);
   });
 </script>

@@ -99,10 +99,9 @@
   });
 
   const filterProducts = () => {
-    const selectedCategoriesIds = selectedCategories.value.length
-      ? selectedCategories.value.map((category) => category.id)
-      : ['home'];
-    emit('category:filter', selectedCategoriesIds);
+    categoryStore.setSelectedCategories(selectedCategories.value);
+
+    emit('category:filter');
   };
 
   onMounted(async () => {

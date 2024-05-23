@@ -5,6 +5,7 @@
         v-model="searchText"
         @focus="handleSearchFocus"
         @blur="handleSearchBlur"
+        @filter="handleFilter"
       />
 
       <Geolocation v-if="!isSearchActive" />
@@ -30,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
+  const emit = defineEmits(['filter']);
 
   const isSearchActive = ref(false);
   const searchText = ref('');
@@ -41,6 +42,10 @@
 
   const handleSearchBlur = () => {
     isSearchActive.value = false;
+  };
+
+  const handleFilter = (searchValue: string) => {
+    emit('filter', searchValue);
   };
 
   onMounted(async () => {});

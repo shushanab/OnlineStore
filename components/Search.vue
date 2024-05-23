@@ -2,7 +2,7 @@
   <v-responsive :max-width="minWidth" min-width="150">
     <transition name="field-transition">
       <v-text-field
-        v-model="internalValue"
+        v-model="internalSearchValue"
         density="compact"
         rounded="pill"
         variant="solo-filled"
@@ -12,17 +12,18 @@
         single-line
         prepend-inner-icon="mdi-magnify"
         clear-icon="mdi-close"
+        class="highlight-on-focus"
+        :label="$t('search')"
+        @keyup.enter="handleFilter"
         @focus="handleFocus"
         @blur="handleBlur"
-        :label="$t('search')"
-        class="highlight-on-focus"
       />
     </transition>
   </v-responsive>
 </template>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue';
+  import { useSearchStore } from '~/stores/search';
 
   const emit = defineEmits(['focus', 'blur', 'update:modelValue']);
   const minWidth = ref(275);
@@ -31,30 +32,40 @@
     modelValue: String,
   });
 
-  const internalValue = ref(props.modelValue);
+  const searchStore = useSearchStore();
+  const internalSearchValue = ref(searchStore.searchValue);
 
   const handleFocus = () => {
     minWidth.value = minWidth.value * 2;
     emit('focus');
   };
 
+  const handleFilter = () => {
+    const searchEvent = new CustomEvent('perform-search', {
+      detail: internalSearchValue.value,
+    });
+    window.dispatchEvent(searchEvent);
+  };
+
   const handleBlur = () => {
     minWidth.value = minWidth.value / 2;
+    handleFilter();
     emit('blur');
   };
 
   watch(
     () => props.modelValue,
     (newValue) => {
-      internalValue.value = newValue;
+      internalSearchValue.value = newValue;
     }
   );
 
   watch(
-    () => internalValue.value,
+    () => internalSearchValue.value,
     (newValue) => {
       if (newValue !== props.modelValue) {
         emit('update:modelValue', newValue);
+        searchStore.setSearchValue(newValue);
       }
     }
   );
