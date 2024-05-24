@@ -5,33 +5,25 @@
     icon="mdi-map-marker"
     variant="text"
   ></v-btn>
-  <p style="line-height: 16px">
-    <b>{{ city }} </b>
+  <div class="location-wrapper">
+    <b>{{ locationStore.city }} </b>
     <br />
-    <small> {{ country }}</small>
-  </p>
+    <small>{{ locationStore.country }}</small>
+  </div>
 </template>
+
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
+  import { useLocationStore } from '~/stores/location';
 
-  const country = ref('');
-  const city = ref('');
+  const locationStore = useLocationStore();
 
-  onMounted(async () => {
-    try {
-      const response = await fetch(
-        'http://ip-api.com/json?fields=country,city'
-      );
-      if (!response.ok) {
-        throw new Error(
-          'Request failed. Returned status of ' + response.status
-        );
-      }
-      const data = await response.json();
-      country.value = data.country;
-      city.value = data.city;
-    } catch (error) {
-      console.error('Request failed:', error);
-    }
+  onMounted(() => {
+    locationStore.fetchLocation();
   });
 </script>
+
+<style scoped>
+  .location-wrapper {
+    line-height: 16px;
+  }
+</style>

@@ -24,10 +24,10 @@
         }}</v-card-title>
         <v-card-text>
           <h2>{{ product?.defaultDisplayedPriceFormatted }}</h2>
-          <div
-            :class="['description', { visible: isHovering }]"
-            v-html="product?.description"
-          ></div>
+          <ProductDescription
+            :description="product?.description"
+            :isHovering="isHovering"
+          />
         </v-card-text>
         <v-card-actions class="ml-0 pl-0">
           <v-list-item class="w-100">
@@ -73,19 +73,15 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue';
-  import { useRouter } from 'vue-router';
-
   const props = defineProps({
     productData: Object,
   });
 
   const product = ref(props.productData);
-  const router = useRouter();
 
   const navigateToProduct = () => {
     if (!isActionButtonClicked) {
-      router.push(`/product/${product.value.id}`);
+      navigateTo(`/product/${product.value.id}`);
     }
   };
 
@@ -131,7 +127,7 @@
   }
 
   .img-scale {
-    transform: scale(1.3);
+    transform: scaleX(1.3);
     overflow-y: hidden !important;
     transition: 0.5s ease all;
     width: 100%;
@@ -158,28 +154,5 @@
     animation:
       slide-in 1s ease-out forwards,
       flash 1s infinite;
-  }
-
-  .description {
-    font-size: 16px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 16px;
-    color: darkslategray;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition:
-      visibility 0.3s,
-      opacity 0.3s;
-    visibility: hidden;
-    opacity: 0;
-    z-index: 10;
-  }
-
-  .description.visible {
-    visibility: visible;
-    opacity: 1;
   }
 </style>

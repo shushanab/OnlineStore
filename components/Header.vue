@@ -1,6 +1,14 @@
 <template>
   <v-app-bar flat color="teal">
     <v-container class="mx-auto d-flex align-center justify-center" fluid>
+      <v-btn
+        class="ma-2"
+        color="white"
+        icon="mdi-home"
+        variant="text"
+        to="/"
+      ></v-btn>
+
       <Search
         v-model="searchText"
         @focus="handleSearchFocus"
@@ -33,8 +41,8 @@
 <script setup lang="ts">
   const emit = defineEmits(['filter']);
 
-  const isSearchActive = ref(false);
   const searchText = ref('');
+  const isSearchActive = ref(true);
 
   const handleSearchFocus = () => {
     isSearchActive.value = true;

@@ -16,7 +16,13 @@
   },
   "common": {
     "search": "Search",
-    "home-page": "Home Page"
+    "home-page": "Home Page",
+    "footer-text": "Online Shop. All rights reserved."
+  },
+  "home": {
+    "black-friday-sale-title": "Black Friday Sale!",
+    "black-friday-sale-subtitle": "Don't miss our biggest, up to 50% sale of the year!",
+    "shop-now": "Shop Now"
   },
   "error": {
     "page-not-found": "404 Not Found",

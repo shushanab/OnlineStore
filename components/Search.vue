@@ -7,6 +7,7 @@
         rounded="pill"
         variant="solo-filled"
         flat
+        autofocus
         clearable
         hide-details
         single-line
@@ -55,7 +56,7 @@
 
   const handleBlur = () => {
     minWidth.value = minWidth.value / 2;
-    handleFilter();
+    // handleFilter();
     emit('blur');
   };
 

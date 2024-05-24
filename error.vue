@@ -26,5 +26,6 @@
 
   const pageNotFound = t('error.page-not-found');
   const otherError = t('error.other-error');
+
   const error = ref(props.error);
 </script>

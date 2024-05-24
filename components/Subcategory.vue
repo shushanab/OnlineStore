@@ -6,7 +6,7 @@
         hover
         width="180"
         height="180"
-        :class="['ma-4 rounded-lg', { 'selected-card': selected }]"
+        :class="['ma-2 rounded-lg', { 'selected-card': selected }]"
         @click="toggleSelection"
       >
         <v-img
@@ -23,7 +23,6 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue';
   const emit = defineEmits(['category:selected']);
 
   const props = defineProps({
