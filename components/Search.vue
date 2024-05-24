@@ -2,7 +2,7 @@
   <v-responsive :max-width="minWidth" min-width="150">
     <transition name="field-transition">
       <v-text-field
-        v-model="internalSearchValue"
+        v-model.trim="internalSearchValue"
         density="compact"
         rounded="pill"
         variant="solo-filled"
@@ -34,8 +34,12 @@
     modelValue: String,
   });
 
+  const router = useRouter();
+  const route = useRoute();
   const searchStore = useSearchStore();
-  const internalSearchValue = ref(searchStore.searchValue);
+  const internalSearchValue = ref(
+    route.query.keyword || searchStore.searchValue
+  );
 
   const handleFocus = () => {
     minWidth.value = minWidth.value * 2;
@@ -48,15 +52,17 @@
   };
 
   const handleFilter = () => {
+    const keyword = internalSearchValue.value;
+    searchStore.setSearchValue(keyword);
+    router.push({ path: '/products', query: { keyword } });
     const searchEvent = new CustomEvent('perform-search', {
-      detail: internalSearchValue.value,
+      detail: keyword,
     });
     window.dispatchEvent(searchEvent);
   };
 
   const handleBlur = () => {
     minWidth.value = minWidth.value / 2;
-    // handleFilter();
     emit('blur');
   };
 
@@ -76,6 +82,12 @@
       }
     }
   );
+
+  onMounted(() => {
+    if (route.query.keyword) {
+      internalSearchValue.value = route.query.keyword;
+    }
+  });
 </script>
 
 <style scoped>

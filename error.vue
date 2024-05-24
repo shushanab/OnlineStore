@@ -6,9 +6,17 @@
       />
     </v-col>
     <v-col class="text-center">
-      <NuxtLink to="/" variant="elevated">
+      <v-btn
+        variant="elevated"
+        color="teal"
+        x-large
+        rounded="xl"
+        class="px-8"
+        to="/"
+        prepend-icon="mdi-cart-plus"
+      >
         {{ $t('common.home-page') }}
-      </NuxtLink>
+      </v-btn>
     </v-col>
   </v-app>
 </template>
