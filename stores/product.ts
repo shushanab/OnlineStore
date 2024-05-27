@@ -8,6 +8,7 @@ export const useProductStore = defineStore('product', {
       count: 0,
       items: [],
     },
+    product: Object,
     loading: false,
   }),
   actions: {
@@ -24,6 +25,22 @@ export const useProductStore = defineStore('product', {
         if (data.value) {
           this.productObj = data.value;
           return this.productObj;
+        }
+        return null;
+      } catch (error) {
+        console.error('Request failed:', error);
+        throw error;
+      } finally {
+        this.loading = false;
+      }
+    },
+    async getProductById(id: number) {
+      this.loading = true;
+      try {
+        const { data } = await useApiFetch(`/products/${id}`);
+        if (data.value) {
+          this.product = data.value;
+          return this.product;
         }
         return null;
       } catch (error) {

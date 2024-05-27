@@ -6,7 +6,7 @@
         class="ma-2 rounded-lg"
         hover
         @click="navigateToProduct"
-        :href="!isActionButtonClicked ? `product/${product?.id}` : undefined"
+        :href="!isActionButtonClicked ? `products/${product?.id}` : undefined"
         :disabled="!product?.inStock"
       >
         <v-img
@@ -37,13 +37,13 @@
                   icon="mdi-heart-outline"
                   size="small"
                   disabled
-                  @click.prevent="addToWishlist(product)"
+                  @click.prevent="addToWishlist(product?.id)"
                 ></v-btn>
 
                 <v-btn
                   icon="mdi-share-variant"
                   size="small"
-                  @click.prevent="openShareDialog(product.id)"
+                  @click.prevent="openShareDialog(product?.id)"
                 ></v-btn>
               </div>
             </template>
@@ -53,7 +53,7 @@
                   class="me-3"
                   icon="mdi-cart-plus"
                   size="small"
-                  @click.prevent="addToCart(product)"
+                  @click.prevent="addToCart(product?.id)"
                 ></v-btn>
                 <v-btn
                   color="teal"
@@ -63,7 +63,7 @@
                   class="px-6"
                   text="buy"
                   prepend-icon="mdi-credit-card-fast-outline"
-                  @click.prevent="buyNow(product)"
+                  @click.prevent="buyNow(product?.id)"
                 />
               </div>
             </template>
@@ -88,7 +88,7 @@
 
   const navigateToProduct = () => {
     if (!isActionButtonClicked) {
-      navigateTo(`/product/${product.value.id}`);
+      navigateTo(`/products/${product?.value?.id}`);
     }
   };
 
@@ -103,15 +103,15 @@
     showShareDialog.value = true;
   };
 
-  const addToWishlist = (product) => {
+  const addToWishlist = (product: Product) => {
     console.log('Added to wishlist:', product);
   };
 
-  const addToCart = (product) => {
+  const addToCart = (product: Product) => {
     console.log('Added to cart:', product);
   };
 
-  const buyNow = (product) => {
+  const buyNow = (product: Product) => {
     console.log('Buying product:', product);
   };
 </script>

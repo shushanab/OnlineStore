@@ -17,12 +17,6 @@ declare global {
     items: Array<Product>;
   }
 
-  interface Categories {
-    count: number;
-    parentCategoryId: number;
-    items: Array<Category>;
-  }
-
   interface Category {
     id: number;
     name: string;

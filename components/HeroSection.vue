@@ -7,14 +7,14 @@
       <p class="sale-subtitle">{{ $t('home.black-friday-sale-subtitle') }}</p>
 
       <v-btn
+        to="/products"
         color="teal"
         variant="elevated"
         rounded="shaped"
         class="px-8 mt-6"
         x-large
-        :text="$t('home.shop-now')"
         prepend-icon="mdi-cart-plus"
-        to="/products"
+        :text="$t('home.shop-now')"
       />
     </v-col>
   </v-row>
