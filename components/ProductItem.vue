@@ -5,14 +5,14 @@
         v-bind="props"
         class="ma-2 rounded-lg"
         hover
-        :disabled="!product?.inStock"
-        :href="!isActionButtonClicked ? `product/${product?.id}` : undefined"
         @click="navigateToProduct"
+        :href="!isActionButtonClicked ? `product/${product?.id}` : undefined"
+        :disabled="!product?.inStock"
       >
         <v-img
-          :class="['align-end', { 'img-scale': isHovering }]"
           height="300px"
           cover
+          :class="['align-end', { 'img-scale': isHovering }]"
           :src="product?.thumbnailUrl"
         >
           <div v-if="product?.sku == '0001'" class="badge">
@@ -36,12 +36,14 @@
                 <v-btn
                   icon="mdi-heart-outline"
                   size="small"
+                  disabled
                   @click.prevent="addToWishlist(product)"
                 ></v-btn>
+
                 <v-btn
                   icon="mdi-share-variant"
                   size="small"
-                  @click.prevent="shareProduct(product)"
+                  @click.prevent="openShareDialog(product.id)"
                 ></v-btn>
               </div>
             </template>
@@ -68,6 +70,11 @@
           </v-list-item>
         </v-card-actions>
       </v-card>
+      <ShareProduct
+        :productUrl="selectedProductUrl"
+        :showShareDialog="showShareDialog"
+        @update:showShareDialog="showShareDialog = $event"
+      />
     </template>
   </v-hover>
 </template>
@@ -87,12 +94,17 @@
 
   const isActionButtonClicked = ref(false);
 
-  const addToWishlist = (product) => {
-    console.log('Added to wishlist:', product);
+  const showShareDialog = ref(false);
+  const selectedProductUrl = ref('');
+
+  const openShareDialog = (productId: number) => {
+    const url = window.location.origin;
+    selectedProductUrl.value = `${url}/products/${productId}`;
+    showShareDialog.value = true;
   };
 
-  const shareProduct = (product) => {
-    console.log('Shared product:', product);
+  const addToWishlist = (product) => {
+    console.log('Added to wishlist:', product);
   };
 
   const addToCart = (product) => {

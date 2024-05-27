@@ -3,6 +3,8 @@
     "list": "Products",
     "total": "Found {0} products",
     "buy": "Buy",
+    "share": "Share",
+    "copy-success": "Link successfully copied to the clipboard!",
     "add-to-cart": "+ Cart",
     "sku": "Stock keeping unit: {0} pieces",
     "one-left": "Only one left",
@@ -17,7 +19,7 @@
   "common": {
     "search": "Search",
     "home-page": "Home Page",
-    "footer-text": "Online Shop. All rights reserved."
+    "footer-text": "Online Store. All rights reserved."
   },
   "home": {
     "black-friday-sale-title": "Black Friday Sale!",

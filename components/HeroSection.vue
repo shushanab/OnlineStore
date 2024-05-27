@@ -9,7 +9,7 @@
       <v-btn
         color="teal"
         variant="elevated"
-        rounded="xl"
+        rounded="shaped"
         class="px-8 mt-6"
         x-large
         :text="$t('home.shop-now')"
